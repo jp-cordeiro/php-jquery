@@ -1,32 +1,39 @@
+<?php
+require_once("funcoes/bd/conexao.php");
+
+conecta();
+?>
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="en">
 <head>
-<title>Admin com PHP e jQuery</title>
-   <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Admin com PHP E JQuery</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <div class="container">
     <div class="login">
         <h2>ÁREA RESTRITA</h2>
-        <form action="" method="POST" class="form">
+        <form name="formLogin" id="formLogin" action="" method="POST" class="form">
             <div class="form-group">
                 <label for="login">Login</label>
-                <input name="login" id="login" type="text" class="form-control input-lg" placeholder="Login">
+                <input name="login" id="login" type="text" class="form-control input-lg" placeholder="Login" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input name="password" id="password" type="text" class="form-control input-lg" placeholder="Senha">
+                <input name="password" id="password" type="password" class="form-control input-lg" placeholder="Senha" required>
             </div>
 
-            <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user">Entrar</span></button>
+            <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span> Logar
+            </button>
         </form>
     </div>
 </div>
-<script src="bower_components/jquery/dist/jquery.slim.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
