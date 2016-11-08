@@ -15,10 +15,13 @@ $(document).ready(function () {
             type: "POST",
             data: "acao=login&" + formLogin.serialize(),
             beforeSend: function () {
-                btn.html('Aguarde realizando o login ...').attr('disabled', true);
+                btn.attr('disabled', true);
+                $('.load').fadeIn('slow');
             },
             success: function (retorno) {
-                btn.html('<span class="glyphicon glyphicon-user"></span> Logar').attr('disabled', false);
+                btn.attr('disabled', false);
+                $('.load').fadeOut('slow');
+
                 if (retorno === 'noLogin') {
                     msg('Esse login não existe.', 'erro');
                 } else if (retorno === 'noPass') {
@@ -26,7 +29,13 @@ $(document).ready(function () {
                 } else if (retorno === 'noPermission') {
                     msgm('Você não tem permissão para acessar essa área.', 'erro');
                 }else{
+                    formLogin.fadeOut('fast', function () {
+                        msg('Login enfetuado com sucesso, redirecionando ...','sucesso');
+                    });
 
+                    setTimeout(function () {
+                        $(location).attr('href','https://www.google.com');
+                    },3000);
                 }
             }
         });

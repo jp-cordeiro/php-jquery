@@ -12,14 +12,14 @@ switch ($acao) {
         $senha = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
         if(login($login,$senha)){
-
+            $_SESSION['admin'][] = trataLogin($login);
         }else{
             $dados = trataLogin($login);
 
 //            if(empty($login) || empty($senha)){
 //                echo 'vazio';
 //            }
-//            else 
+//            else
             if(!$dados){
                 //echo "Esse login não existe";
                 echo "noLogin";

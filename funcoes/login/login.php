@@ -10,7 +10,7 @@ function login($login,$senha){
         $qLogin->bindValue(2,$senha,PDO::PARAM_STR);
         $qLogin->execute();
         
-        if($qLogin->rowCount() == 1){
+        if($qLogin->fetchColumn() == 1){
             return true;
         }else{
             return false;
@@ -30,7 +30,7 @@ function trataLogin($login){
 
         $qLogin->execute();
 
-        if($qLogin->rowCount() == 1){
+        if($qLogin){
             return $qLogin->fetch(PDO::FETCH_OBJ);
         }else{
             return false;

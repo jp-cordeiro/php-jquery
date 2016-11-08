@@ -1,7 +1,5 @@
 <?php
 require_once("funcoes/bd/conexao.php");
-
-conecta();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +32,12 @@ conecta();
 
             <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span> Logar
             </button>
+            <img id="load" src="files/gangnam_load.gif"
+                 class="load"
+                 alt="Carregando"
+            width="200"
+            height="100"
+            style="display: none;">
         </form>
     </div>
 </div>
