@@ -13,14 +13,21 @@ $(document).ready(function () {
         $.ajax({
             url: "ajax/controller.php",
             type: "POST",
-            data: "acao=login&"+formLogin.serialize(),
+            data: "acao=login&" + formLogin.serialize(),
             beforeSend: function () {
-                btn.html('Aguarde realizando o login ...').attr('disabled',true);
+                btn.html('Aguarde realizando o login ...').attr('disabled', true);
             },
             success: function (retorno) {
-                console.log(retorno);
+                btn.html('<span class="glyphicon glyphicon-user"></span> Logar').attr('disabled', false);
+                if (retorno === 'noLogin') {
+                    msg('Esse login não existe.', 'erro');
+                } else if (retorno === 'noPass') {
+                    msg('Senha incorreta.', 'erro');
+                } else if (retorno === 'noPermission') {
+                    msgm('Você não tem permissão para acessar essa área.', 'erro');
+                }else{
 
-                btn.html('<span class="glyphicon glyphicon-user"></span> Logar').attr('disabled',false);
+                }
             }
         });
 
@@ -28,3 +35,19 @@ $(document).ready(function () {
     });
 
 });
+
+//Funcoes
+
+function msg(msg, tipo) {
+    var retorno = $('.retorno');
+    var tipo = (tipo === 'sucesso') ? 'success' : (tipo === 'alerta') ? 'warning' : (tipo === 'erro') ? 'danger' : (tipo === 'info') ? 'info' : alert("");
+
+
+    retorno.empty().fadeOut('fast', function () {
+        return $(this).html('<div class="alert alert-' + tipo + '">' + msg + '</div>').fadeIn('slow');
+    });
+
+    setTimeout(function () {
+        retorno.fadeOut('slow').empty();
+    }, 6000);
+}

@@ -18,6 +18,9 @@ conecta();
 <div class="container">
     <div class="login">
         <h2>ÁREA RESTRITA</h2>
+        
+        <div class="retorno"></div>
+        
         <form name="formLogin" id="formLogin" action="" method="POST" class="form">
             <div class="form-group">
                 <label for="login">Login</label>
